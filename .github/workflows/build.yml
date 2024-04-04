@@ -1,0 +1,24 @@
+name: build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # TODO: Remove once repo is public
+    env:
+      GOPRIVATE: github.com/Anon10214/*
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.22.x
+
+      - name: Build
+        run: go build -v ./...

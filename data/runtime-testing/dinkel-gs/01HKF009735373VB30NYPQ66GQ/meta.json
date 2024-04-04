@@ -1,0 +1,17 @@
+{
+	"ulid": "01HKF009735373VB30NYPQ66GQ",
+	"minTime": 1704520800358,
+	"maxTime": 1704528000000,
+	"stats": {
+		"numSamples": 148320,
+		"numSeries": 103,
+		"numChunks": 1236
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HKF009735373VB30NYPQ66GQ"
+		]
+	},
+	"version": 1
+}

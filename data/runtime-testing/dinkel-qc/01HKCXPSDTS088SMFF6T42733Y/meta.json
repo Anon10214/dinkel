@@ -1,0 +1,17 @@
+{
+	"ulid": "01HKCXPSDTS088SMFF6T42733Y",
+	"minTime": 1704456002453,
+	"maxTime": 1704462083024,
+	"stats": {
+		"numSamples": 125092,
+		"numSeries": 103,
+		"numChunks": 1133
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HKCXPSDTS088SMFF6T42733Y"
+		]
+	},
+	"version": 1
+}
