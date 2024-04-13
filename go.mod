@@ -101,5 +101,3 @@ require (
 	golang.org/x/sys v0.17.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1
 )
-
-replace github.com/Anon10214/dinkel/biscepter => ./biscepter
