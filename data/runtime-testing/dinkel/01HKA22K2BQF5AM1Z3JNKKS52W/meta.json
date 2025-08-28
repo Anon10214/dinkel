@@ -1,0 +1,17 @@
+{
+	"ulid": "01HKA22K2BQF5AM1Z3JNKKS52W",
+	"minTime": 1704355200583,
+	"maxTime": 1704362400000,
+	"stats": {
+		"numSamples": 148320,
+		"numSeries": 103,
+		"numChunks": 1236
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HKA22K2BQF5AM1Z3JNKKS52W"
+		]
+	},
+	"version": 1
+}

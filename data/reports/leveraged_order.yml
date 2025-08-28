@@ -1,0 +1,12 @@
+target: neo4j
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-07-07 22:39:02.039560477 +0000 UTC m=+36054.732780823"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "WITH * ORDER BY null RETURN 0 ORDER BY null, COUNT { RETURN 0 AS n0 UNION RETURN 0 AS n0 }"

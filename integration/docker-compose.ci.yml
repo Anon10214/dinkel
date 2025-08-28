@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  neo4j:
+    image: neo4j:5.20.0
+    ports:
+      - 1000:7687
+    environment:
+      - NEO4J_AUTH=none
+      - apoc.export.file.enabled=true
+      - apoc.import.file.enabled=true
+      - apoc.import.file.use_neo4j_config=true
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+  memgraph:
+    image: memgraph/memgraph:2.17.0
+    entrypoint: ./memgraph --storage-properties-on-edges=true --query-plan-cache-max-size=0 --storage-mode=IN_MEMORY_ANALYTICAL
+    ports:
+      - 1001:7687
+  falkordb:
+    image: falkordb/falkordb:v4.0.10
+    ports:
+      - 1002:6379

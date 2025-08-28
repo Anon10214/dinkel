@@ -1,0 +1,17 @@
+{
+	"ulid": "01HKAAXYQMEF43TAW47M1AJVBR",
+	"minTime": 1704369600583,
+	"maxTime": 1704375286273,
+	"stats": {
+		"numSamples": 114553,
+		"numSeries": 103,
+		"numChunks": 1030
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HKAAXYQMEF43TAW47M1AJVBR"
+		]
+	},
+	"version": 1
+}

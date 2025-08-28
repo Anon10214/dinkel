@@ -1,0 +1,12 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-07-03 16:52:26.717172354 +0200 CEST m=+34.270429688"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "CREATE ()<-[x:A]-() DELETE x MERGE ()-[:B]->() DELETE x"

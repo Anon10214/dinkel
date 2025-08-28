@@ -1,0 +1,13 @@
+target: memgraph
+strategy: 1
+# When dinkel found this bug
+time_found: "2025-04-03 16:26:06.265517105 +0200 CEST m=+60.388840405"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: "igVo5atJf7V5vOKQTriiguqlEyJu+7Y0NSr3waDnWHp/Q222I8R0qd6n0XUCRTz19pJGLCjLJyPrAT4IPJqeHCTx2F4R4GxBgSXhPbUAg4pXaAHML2MkIDowZaxiK6amOl0C0YQaeHmWrr25BGsXJGFM7RROe/S4Bt5UsC4XsUyCyigoebW4QNCrvFX+UTI1x7XkhOZ9tqZ0O3CrkrDGo5aJBSaTVJWdbDVmcUbdty9SUlsi5+TXqN0WTHd89C0aajDnWE0LJkEV23mMHNyyUJMGIAaB59bBUHHJDaBviwu9p2kvMI5A9o7mp4NPkUxn3EUkEKFG4eb98tr5zS17y28fp80Q6DZUhkP/Uy+KuBfREN3BoKh3sYe/smG1ww00XKBiBzUFcaohtQReAfk9JUldNotz0bD8A02prFc+kivpRJptqVDD0HCXbpUWXWWUikMtfpHXlH0iMjtaRCwR/02g/8dCIhbqk2uqSG7lZ+TQYoWkE+DRsdP4nV7TZdwx1OCo2tk2YX/SKd5W3ES83N06tCx2NwbIEXXojoXwjpdZzja1A52/Xgv3jG2wF7jZ9LqaKNmdKYGAYtXWLmPbpKdOq/jVKuzQgV/ZkO9WSkBaD40WUm/MUFwxE6wWdOb6od0Z1idwKUgbcFsDeI7gpP4we8gFw9XswQSJvNMJQqg4EBDFvdi0adVBAKVI3Zo+gm5YwU/hz8SEPr+jIVsLTbrGQE0T+RFsBWv/P/jhDThRZXMR5Q3fY5n99lzr5ZX6/yXQQ6wkDMCafv1WmDPzlj4CRRAjTZtAMbC+GyXg1PCZ8yjZxxGNDTkEwooS5678pWHCbsP5VksUiy1KL8Zf5ig+GahpiImwWaRuoKMQW9LEGgzRpgBZTIARMRvwe2DhzbWZxg3ieIft8rOdjgh65gBbm2YYJ735j3Gj75hWvfI29owfQlEWwDA9HNpBRYg98ZVi+XPJ4vKu1hAIqKCizAqCNwfLCrCc+xmHEv5Iqq2vhWIAU90WnoOLHO20PjF2LgNWDx2bYUEiJ3bPmoo4lfuTM/iplYGSfyG4fJl19wRvasalzHUi5Z/+y9yA06yeU9vNwjTqu2LdznmfroPsyuC7laSgJQNuSUCARe03TXE/JDVyiY4KCbJ1eMuEFP5ituXPVvlaoSKDMATtpd74pQB3tcmBPsMVzOtmd04gGwudCGj3dDSjeAAY6i9DbeypRF/JjXkZhI39AlDF3jU7RBdeiLUhadHK5O+mSHhWD+sk+zQqnaFfm7kpTPjJoAjIhgAj3ogvEVFlObkS1AA7jlW8m6D/FAPpuM2c8D8ed1wemnA8MNRJtRyNLe1MZX2ABr+vrT7S08ES46cMAo3gBHzlO2aeEzwilRD5zQVsGCUxySswrEYc4aT3/qQzdS/g5KaMCSKWZQLyWLKn0+O1UhT9gBkVmcV/FrOr4VFnzk58bLL0Ml4z19I50vEtjijq+lyDmmd1EsRz0v1UTjDghYJQ6fNKPvfgSrIawKgeUoHRD6cfN8geJmFD1CZJsCuzbEHEycOSq8iBzCteWVtYbXEQGk0FVJc8dfd01RTZZ+zOFaJ2sYbZHgz6Wen50cx5Rl1vrAO9qgJ7ogrMKU1Gqd5N1Ps8K66Zn3y0X994na4pSW7m1956JtyShOnYNOdjzG5kBCiJxFyOJm5AAJrxO3cqaxY9iSDKxk6pHmisRko2n4W9j7dZwbPFgTYVfXPgYBhMU45bDMuUOf+SJMJfThy96G6CwwY="
+query: 
+  - "UNWIND [(false), none(IkjfmNHWfp IN [] WHERE null), (false)] AS Tk     RETURN  max((false)) AS _vNBIIZuY, (\":\") AS r7V, (false) AS UF7hX, (false) AS j_mpxBtTx, (true) AS lv, null AS XVLKVfd, (null) AS LGAkv   LIMIT (487376597548866638)"
+  - "UNWIND [(false), none(IkjfmNHWfp IN [] WHERE null), (false)] AS Tk     RETURN  max((false)) AS _vNBIIZuY, (\":\") AS r7V, (false) AS UF7hX, (false) AS j_mpxBtTx, (true) AS lv, null AS XVLKVfd, (null) AS LGAkv   LIMIT (487376597548866638)"

@@ -1,0 +1,10 @@
+target: memgraph
+strategy: 0
+# When dinkel found this bug
+time_found: "2023-04-26 15:58:57.270134741 +0200 CEST m=+1177.819143332"
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: "hRzZuB8haizboAphJe/ov3cKa2pAh7wt/Cf4jbuGI2rw8W54Y0VG+W2Nfqhb8GGmflG1CsQw5TPq8F0HxYV0uv0J+I0kflt3WBTkMNEtHoZeF6BbwCHfG2LfKhNAQ7Ga66jPl9cYQ7wU+pN9xdNC/KpXQ+0RpapjDS1MU1jYyjyAWhlz9OUP/aWFJ43Y7nxVxTv3VryQA3f5erFdObJ9AO6SHtEoOO9u6O7TwA5eJRP+RJ/r/F0dCeAJH76T3zY7iQq0e2+imYsHpYC+qwpL2l1f1eVIBUKwx5HEScZ8yJ8DtNT1NRGXaIBVuvJyk+JEr6lgZABt+I6XOvHTKcrrscWGLvRYdTR/0JF4NUPAcMhXXQZ9sGQVh5+jIjCYsjV0GCovcU5Jr0N8FrruSj86ViijJF/IxHS4vDdJlMNU3RFZ5dYezkRIweaXJt5aYCrT41MGq7TBFfrwhjXi2Ldb/5qhnJ1piPj5BNJ63Q85E+Z09nGaSU0ZAyL9h77pYZByNTo8Au9/Hp8NXuu5rl/g5hAGNizEwlUsNbdwugNkWLVuvpilZfZXgqra61Y0LbW1Vfqr+0h2tYo8wLgj/UABpdceL+N4Q9OHfLvmsRU+yIaDOb4G+9fqj8R6jLYGgJPGnf7cKubCJc7KBzYqWxgxloYeBVd4tsic6huYewUmPnA/2o1AmzY/KGAwmH0X9GwSla3qZFEn1eD2camUD7JBfuGT/gQV//wvwDmYnvDTcX0S0F8BtG/CAOoEl+Lir8O3H2sgZd5QeEM1DeyS6Ha7j8ToxtUc7JPJbaxIqGMcPrDwvQsmzB/u8Jr66FrSwXbTCgUL3SQmtvQg/GA2YzOjBNfib9TgkEeHkaCl465KBw/E60QAM9SyCY9rZbE/Ihne8AiTWqogOq5AGudC5yHqt8wPGVjHRBK6YdXuLJnmyKBeJZKCFIsyyYTQPn32QD2s/BsMQYkjp+A="
+query: 
+  - "MERGE (x) RETURN 0 ORDER BY properties(x).n0"

@@ -1,0 +1,25 @@
+name: lint
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.22.x
+
+      - name: Lint
+        uses: wearerequired/lint-action@v2.3.0
+        with:
+          gofmt: true
+          # TODO: Enable this in the future
+          # golint: true

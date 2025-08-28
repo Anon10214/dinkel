@@ -1,0 +1,10 @@
+target: redisgraph
+strategy: 0
+# When dinkel found this bug
+time_found: "2023-04-20 12:55:04.079979347 +0200 CEST m=+0.257066633"
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: "Ylia5lyryD04WDcNOdZXCrsIvUWcG2tFQBbUNVO4orTFdiARKAHmImzKTBSf07a0tmD7T2B2z3WniVAFXEoJDXadWnQMIOi0jWqjl4XTwJOFs8DP2hz4p9li7rN6M1Y13eq/n3xbFWOx2SP04nnxDmay8eRlIMR/MEuYbsuJrPD9OeSE5L9ZyyFUYUVo5g=="
+query: 
+  - "REMOVE null.n0 RETURN 0"

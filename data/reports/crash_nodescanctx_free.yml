@@ -1,0 +1,10 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-04-04 21:31:21.244237579 +0200 CEST m=+1.534608659"
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "MATCH (x) CALL { WITH x MATCH ({n0:x.n1}) MATCH (:A) WITH * ORDER BY x RETURN 0 AS n2 } RETURN 0"

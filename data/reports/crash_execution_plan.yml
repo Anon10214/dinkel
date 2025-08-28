@@ -1,0 +1,10 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-04-04 21:40:10.75330114 +0200 CEST m=+19.055738040"
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "CALL { RETURN 0 AS n0 } MERGE () RETURN 0"

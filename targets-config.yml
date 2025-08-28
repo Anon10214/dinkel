@@ -1,0 +1,527 @@
+gggarget:
+#   ignoredErrors:
+#     - "a^" # Will never match anything - used to ensure syntactic validity
+#   reportedErrors:
+#     - "a^" # Will never match anything - used to ensure syntactic validity
+#   bugreportTemplate: |
+#     {{- if .IsCrash -}}
+#     {{- else if and .IsBug (eq .Strategy "EQUIVALENCE TRANSFORM") -}}
+#     {{- else if .IsBug -}}
+#     {{- end -}}
+neo4j:
+  ignoredErrors:
+    - "^long overflow.*"
+    - "^Underflow$"
+    - "^floating point number is too large.*"
+    - "^Variable `q` already declared$"
+    - "^BigInteger would overflow supported range$"
+    # TODO: Maybe a way to avoid those errors altogether?
+    - "^Aggregation column contains implicit grouping expressions.*"
+    # If a mathematical operation causes an overflow
+    - "^result of -?\\d+ . -?\\d+ cannot be represented.*"
+    # Double negation of MIN_INT
+    - "^result of -?-?\\d+ cannot be represented.*"
+    # Division or modulo by zero
+    - "^/ by zero$"
+    # Accessing a deleted node or relationship
+    - "^Unable to load NODE.*"
+    - "^Unable to load RELATIONSHIP.*"
+    - "^Relationship with id \\d+ has been deleted in this transaction$"
+    - "^Node with id \\d+ has been deleted in this transaction$"
+    # Using NaN in MERGE
+    - "^Cannot merge the following node because of NaN property value for .*"
+    - "^Cannot merge the following relationship because of NaN property value for .*"
+    # TODO: Maybe preventable? But probably unnecessarily time consuming to implement
+    - "^In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN.*"
+    - "^Cannot use aggregation in ORDER BY if there are no aggregate expressions in the preceding WITH .*"
+    - "^Cannot use aggregation in ORDER BY if there are no aggregate expressions in the preceding RETURN .*"
+    # TODO: Probably preventable, ignore for now
+    - "^Can't use aggregating expressions inside of expressions executing over lists.*"
+    # Invalid Regex
+    - "^Invalid Regex: .*"
+    - "^Dangling meta character.*"
+    # When mixing label matching type. Very finicky to avoid, just ignore for now, does the job
+    - "^Mixing label expression symbols .* is not allowed.*"
+    # Referencing a NULL node in a MERGE or CREATE clause
+    - "^Failed to create relationship .*, node .* is missing.*"
+    # Creating too big of a list
+    - "^Cannot index an collection of size \\d+$"
+    # Too much memory used
+    - "^Java heap space$"
+    - "^Step argument to 'range\\(\\)' cannot be zero$"
+    - "^Importing WITH should consist only of simple references to outside variables\\. (ORDER BY|SKIP|LIMIT) is not allowed\\..*"
+    # Referencing CREATE variables in the same CREATE clause, happens sometimes during equivalence transformation
+    - "^key not found: .*$"
+    - "^Did not find `.*` in the slot configuration of .*$"
+    # When transforming a WITH clause starting a CALL clause
+    - "^Importing WITH should consist only of simple references to outside variables.*"
+    # Usually when variable names are keywords
+    - "^Invalid input '.*': expected.*"
+    # When variable name is a float keyword (e.g. NaN or Inf)
+    - "^Type mismatch: expected .* but was Float .*"
+    # Maybe fixable? When equivalence transforming property literal in LIMIT or SKIP
+    - "^It is not allowed to refer to variables in (LIMIT|SKIP), so that the value .*"
+  reportedErrors:
+    - "x^"
+  bugreportTemplate: |
+    {{- if and (and .IsBug (eq .Strategy "EQUIVALENCE TRANSFORM")) (not .LastResult.ProducedError) -}}
+
+    I found a discrepancy when running two semantically equivalent queries against an empty database:
+
+    ---
+    1:
+    ```cypher
+    CHANGE THIS
+    {{ .StatementsString }}
+    ```
+    Produces:
+    ```
+    CHANGE THIS
+    {{ .LastResult.Rows }}
+    ```
+
+    ---
+    2:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+    Produces:
+    ```
+    {{ .LastResult.Rows }}
+    ```
+    ---
+
+    I believe the queries mentioned above are semantically equivalent and thus their result should be the same.
+
+    Additionally, this result only occurs after the commit **{{ printf "%.7s" .OffendingCommit }}**, before which both queries return the same result.
+
+    I encountered this issue when testing queries against the **Neo4j <VERSION> enterprise|community version** in a Docker container running **alpine v.3**.
+
+    ### Steps to reproduce
+    Run the aforementioned, semantically equivalent, queries against an empty database and observe that their results differ.
+
+    ### Expected behavior
+    The queries should result in the same behavior
+
+    ### Actual behavior
+    The query results differ
+
+    {{- else if .IsBug -}}
+
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    I encountered the following error:
+    ```
+    {{ .LastResult.ProducedError }}
+    ```
+
+    I believe the query mentioned above is semantically and syntactically correct and thus no error should be thrown here.
+
+    I encountered this issue when testing queries against the **Neo4j <VERSION> enterprise|community version** in a Docker container running **alpine v.3**.
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe it throws an error:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The query fails with the error message `{{ .LastResult.ProducedError }}`
+
+    {{- end -}}
+
+redisgraph:
+  ignoredErrors:
+    - "^Integer overflow .*$"
+    - "^Float overflow .*$"
+    - "^Division by zero$"
+    - "^Query cannot conclude with REMOVE.*"
+    - "^Delete was constructed without a child operation$"
+    - "^Update error: alias '.*' did not resolve to a graph entity$"
+    - "^'NaN' not defined$"
+    - "^ArgumentError: step argument to range\\(\\) can't be 0$"
+  reportedErrors:
+    - "^(Skip|Limit) operates only on non-negative integers$"
+    - "^Attempted to access undefined attribute$"
+    - "^_AR_EXP_UpdateEntityIdx: Unable to locate a value with alias .* within the record$"
+    - "^Unable to resolve filtered alias .*$"
+    - "^A WITH clause is required to introduce .+ after an updating clause.$"
+    - "^A WITH clause is required to introduce a MATCH clause after an OPTIONAL MATCH.$"
+    - "^RedisGraph does not currently support non-alias references on the left-hand side of SET expressions$"
+    - "^Variable length path, maximum number of hops must be greater or equal to minimum number of hops\\.$"
+    - "^RedisGraph does not currently support =~$"
+    - "^RETURN \\* is not allowed when there are no variables in scope$"
+    - "^Invalid combination of UNION and UNION ALL\\.$"
+    - "^WITH imports in CALL \\{\\} must consist of only simple references to outside variables$"
+    - "^'.*' not defined$"
+  bugreportTemplate: |
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    The RedisGraph instance crashes because of a segmentation fault triggered in `INSERT HERE`
+
+    I encountered this issue when testing queries on the **RedisGraph master branch** in a Docker container running **alpine v.3**.
+
+    <details>
+
+    <summary>Redis Bug Report</summary>
+
+    ```
+    ## PASTE HERE
+    ```
+
+    </details>
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe the database crashes:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The database crashes due to a segfault.
+
+falkordb:
+  ignoredErrors:
+    - "^Integer overflow .*$"
+    - "^Float overflow .*$"
+    - "^Division by zero$"
+    - "^Query cannot conclude with REMOVE.*"
+    - "^Delete was constructed without a child operation$"
+    - "^Update error: alias '.*' did not resolve to a graph entity$"
+    - "^'NaN' not defined$"
+    - "^ArgumentError: step argument to range\\(\\) can't be 0$"
+    - "^Failed to create relationship; endpoint was not found\\.$"
+    - "^Invalid UTF8 string$"
+    # FIXME
+    - "^Cannot merge node using null property value$"
+    # FIXME
+    - "^Query cannot begin with 'WITH \\*'\\.$"
+    # FIXME
+    - ".* specified value of invalid type.*"
+  reportedErrors:
+    - "^(Skip|Limit) operates only on non-negative integers$"
+    - "^Attempted to access undefined attribute$"
+    - "^_AR_EXP_UpdateEntityIdx: Unable to locate a value with alias .* within the record$"
+    - "^Unable to resolve filtered alias .*$"
+    - "^A WITH clause is required to introduce .+ after an updating clause.$"
+    - "^A WITH clause is required to introduce a MATCH clause after an OPTIONAL MATCH.$"
+    - "^FlakorDB does not currently support non-alias references on the left-hand side of SET expressions$"
+    - "^Variable length path, maximum number of hops must be greater or equal to minimum number of hops\\.$"
+    - "^FlakorDB does not currently support =~$"
+    - "^RETURN \\* is not allowed when there are no variables in scope$"
+    - "^WITH imports in CALL {} must consist of only simple references to outside variables$"
+    - "^Invalid combination of UNION and UNION ALL\\.$"
+    - "^'.*' not defined$"
+    - "^Error: Multiple result columns with the same name are not supported\\.$"
+    - "^Type mismatch: expected Integer, Float, or Null but was Boolean$"
+    - "^Type mismatch: expected Map, Node, Edge, Null, or Point but was Path$"
+  bugreportTemplate: |
+    {{- if .IsCrash -}}
+
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    The FalkorDB instance crashes because of a segmentation fault triggered in `INSERT HERE`
+
+    I encountered this issue when testing queries on the **FalkorDB master branch** in a Docker container running **redis:7.2.3-bookworm**.
+
+    <details>
+
+    <summary>Redis Bug Report</summary>
+
+    ```
+    ## PASTE HERE
+    ```
+
+    </details>
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe the database crashes:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The database crashes due to a segfault.
+
+    {{- else if and (and .IsBug (eq .Strategy "EQUIVALENCE TRANSFORM")) (not .LastResult.ProducedError) -}}
+
+    I found a discrepancy when running two semantically equivalent queries against an empty database:
+
+    ---
+    1:
+    ```cypher
+    CHANGE THIS
+    {{ .StatementsString }}
+    ```
+    Produces:
+    ```
+    CHANGE THIS
+    {{ .LastResult.Rows }}
+    ```
+
+    ---
+    2:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+    Produces:
+    ```
+    {{ .LastResult.Rows }}
+    ```
+    ---
+
+    I believe the queries mentioned above are semantically equivalent and thus their result should be the same.
+
+    Additionally, this result only occurs after the commit **{{ printf "%.7s" .OffendingCommit }}**, before which both queries return the same result.
+
+    I encountered this issue when testing queries on the **FalkorDB master branch** in a Docker container running **redis:7.2.3-bookworm**.
+
+    ### Steps to reproduce
+    Run the aforementioned, semantically equivalent, queries against an empty database and observe that their results differ.
+
+    ### Expected behavior
+    The queries should result in the same behavior
+
+    ### Actual behavior
+    The query results differ
+
+    {{- else if .IsBug -}}
+
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    I encountered the following error:
+    ```
+    {{ .LastResult.ProducedError }}
+    ```
+
+    I believe the query mentioned above is semantically and syntactically correct and thus no error should be thrown here.
+
+    I encountered this issue when testing queries on the **FalkorDB master branch** in a Docker container running **redis:7.2.3-bookworm**.
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe it throws an error:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The query fails with the error message `{{ .LastResult.ProducedError }}`
+    {{- end -}}
+
+memgraph:
+  ignoredErrors:
+    - "^Invalid types: .*$"
+    - "^Function 'PERCENTILEDISC' doesn't exist\\.$"
+    - "^Function 'STDEV' doesn't exist\\.$"
+    - "^Function 'STDEVP' doesn't exist\\.$"
+    # FIXME
+    - "^Argument of UNWIND must be a list, but '.*' was provided\\.$"
+    - "^Comparison is not defined for values of type .*$"
+    - "^Returning a deleted object as a result\\.$"
+    - "^Returning a deleted object as a result\\.$"
+    - "^Trying to (g|s)et .*(deleted|exist).*\\.$"
+    # In equivalence transformation
+    - "^Using aggregation functions inside of CASE is not allowed\\.$"
+    - "^Variables are not allowed in SKIP\\.$"
+    - "^Not yet implemented: power \\(\\^\\) operator$"
+    - "^Only boolean, numeric, string, and non-duration temporal values are allowed in MIN and MAX aggregations\\.$"
+    - "^Expected a vertex for '.*', but got null\\.$"
+    # When generated variable names are keywords
+    - "^line \\d+:\\d+ no viable alternative at input '.*'"
+    - "^line \\d+:\\d+ extraneous input '.*'"
+    - "^line \\d+:\\d+ mismatched input '.*'"
+    - "^Unbound variable: .*\\.$"
+    - "^Regex error.*$"
+  reportedErrors:
+    - "a^"
+    - "^.* can't be put after .* clause or after an update\\."
+    - "^Can't have null literal properties inside merge .*!$"
+    - "^There are no variables in scope to use for '\\*'\\.$"
+    - "^Could not create a valid query plan, possible ill-formed query$"
+    - "^MATCH can't be put after OPTIONAL MATCH\\.$"
+    - "^An unknown exception occurred, this is unexpected\\. Real message should be in database logs\\.$"
+  bugreportTemplate: |
+    {{- if .IsCrash -}}
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    My memgraph instance crashes due to a segfault.
+
+    I encountered this issue when testing queries against a locally compiled instance of the memgraph master branch in a Docker container running **debian bullseye**.
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe the database crashes:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The query crashes the database.
+    {{- else if and (and .IsBug (eq .Strategy "EQUIVALENCE TRANSFORM")) (not .LastResult.ProducedError) -}}
+
+    I found a discrepancy when running two semantically equivalent queries against an empty database:
+
+    ---
+    1:
+    ```cypher
+    CHANGE THIS
+    {{ .StatementsString }}
+    ```
+    Produces:
+    ```
+    CHANGE THIS
+    {{ .LastResult.Rows }}
+    ```
+
+    ---
+    2:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+    Produces:
+    ```
+    {{ .LastResult.Rows }}
+    ```
+    ---
+
+    I believe the queries mentioned above are semantically equivalent and thus their result should be the same.
+
+    Additionally, this result only occurs after the commit **{{ printf "%.7s" .OffendingCommit }}**, before which both queries return the same result.
+
+    I encountered this issue when testing queries against a locally compiled instance of the memgraph master branch in a Docker container running **debian bullseye**.
+
+    ### Steps to reproduce
+    Run the aforementioned, semantically equivalent, queries against an empty database and observe that their results differ.
+
+    ### Expected behavior
+    The queries should result in the same behavior
+
+    ### Actual behavior
+    The query results differ
+
+    {{- else if .IsBug -}}
+    When running the following query:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    I encountered the following error:
+    ```
+    {{ .LastResult.ProducedError }}
+    ```
+
+    I believe the query mentioned above is semantically and syntactically correct and thus no error should be thrown here.
+
+    I encountered this issue when testing queries against a locally compiled instance of the memgraph master branch in a Docker container running **debian bullseye**.
+
+    ### Steps to reproduce
+    Run the following {{ len .Statements | plural "query" "queries" }} and observe it throws an error:
+    ```cypher
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The query fails with the error message `{{ .LastResult.ProducedError }}`
+    {{- end -}}
+
+apache-age:
+  ignoredErrors:
+    - "^floating-point exception$"
+    - "^division by zero$"
+    - "^input is out of range$"
+    - "^value overflows numeric format$"
+    - "^value out of range: (under|over)flow$"
+    - "^return row and column definition list do not match$"
+    - '^".*" must be either part of an explicitly listed key or used inside an aggregate function$'
+    - "^(left|right)\\(\\) negative values are not supported for length$"
+    - "^MATCH cannot follow OPTIONAL MATCH$"
+    - "^vertex assigned to variable .+ was deleted$"
+    - "^invalid regular expression: .*$"
+    - "^Expecting edge label, found existing vertex label$"
+    # TODO: Fix this over all implementations
+    # When using predefined words as variable names
+    - '^syntax error at or near ".*"$'
+    - "^invalid memory alloc request size \\d+$"
+  reportedErrors:
+    - "^a path is of the form: .*$"
+    - "^multiple labels for variable '.*' are not supported$"
+    - "^UNION types .* and .* cannot be matched$"
+  bugreportTemplate: |
+    I found a bug using my cypher fuzzer.
+
+    When running the following query against an empty database:
+    ```cypher
+    {{ .LastStatement }}
+    ```
+
+    I encountered the following error:
+    ```
+    {{ .LastResult.ProducedError }}
+    ```
+
+    I believe the query mentioned above is semantically and syntactically correct and thus no error should be thrown here.
+
+    Additionally, the query runs successfully in neo4j.
+
+    I encountered this issue when testing queries against the **apache/age:PG13_latest** docker image.
+
+    ### Steps to reproduce
+
+    Spin up a local instance of **apache/age:PG13_latest**: `docker run -e POSTGRES_PASSWORD=123 --rm --name age apache/age:PG13_latest`
+
+    Get a shell in the docker container: `docker exec -it age /bin/bash`
+
+    Connect to postgres: `su postgres -c psql`
+
+    Run the following queries:
+    ```psql
+    LOAD 'age';
+    ---
+    SET search_path = ag_catalog, "$user", public;
+    ---
+    SELECT create_graph('graph');
+    ---
+    SELECT * FROM cypher('graph',$$
+    	{{ .LastStatement }}
+    $$) as (v agtype);
+    ---
+    {{ .StatementsString }}
+    ```
+
+    ### Expected behavior
+    The query should run successfully
+
+    ### Actual behavior
+    The query fails with the error message `{{ .LastResult.ProducedError }}`.

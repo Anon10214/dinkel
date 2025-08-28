@@ -1,0 +1,43 @@
+target: neo4j
+# When dinkel found this bug
+time_found: "2023-03-27 13:52:55.357487256 +0200 CEST m=+0.303103896"
+# The byte string that generates a query triggering this bug
+byte_string: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+query:
+  - "UNWIND [0]+[] AS i RETURN toBoolean(i)"
+report_message: |
+  When running the following query against an empty database:
+  
+  ```cypher
+  UNWIND [0]+[] AS i RETURN toBoolean(i)
+  ```
+  
+  I encountered the following error:
+  ```
+  Type mismatch: expected Boolean, Integer or String but was Float (line 1, column 37 (offset: 36))
+  "UNWIND [0]+[] AS i RETURN toBoolean(i)"
+                                       ^
+  ```
+  
+  I believe the query mentioned above is semantically and syntactically correct and thus no error should be thrown here.
+  Additionally, alternatives that evaluate to the same query don't throw an error, like for example:
+  `UNWIND [0] AS i RETURN toBoolean(i)` or
+  `UNWIND []+[0] AS i RETURN toBoolean(i)` or
+  `RETURN toBoolean(0)`
+  
+  I encountered this issue when testing queries against the **Neo4j 5.5.0 community version** in a Docker container running **alpine v.3**.
+  
+  ### Steps to reproduce
+  Run the following query and observe it throws an error:
+  ```cypher
+  UNWIND [0]+[] AS i RETURN toBoolean(i)
+  ```
+  
+  ### Expected behavior
+  The query should run successfully
+  
+  ### Actual behavior
+  The query fails with the error message `Type mismatch: expected Boolean, Integer or String but was Float...`
+  

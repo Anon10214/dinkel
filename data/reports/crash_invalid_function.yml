@@ -1,0 +1,12 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-07-09 19:35:01.610450876 +0000 UTC m=+13070.430529455"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "CALL { WITH 0 AS x MATCH (:A) MATCH ({n0:CASE WHEN 0 THEN x END}) RETURN 0 AS n1 } RETURN 0"

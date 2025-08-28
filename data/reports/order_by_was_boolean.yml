@@ -1,0 +1,43 @@
+target: neo4j
+# When dinkel found this bug
+time_found: "2023-03-25 12:15:01.90522478 +0100 CET m=+1.074072592"
+# The byte string that generates a query triggering this bug
+byte_string: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+query:
+  - "RETURN null ORDER BY properties(CASE WHEN null THEN null END)"
+report_message: |
+  When running the following query against an empty database:
+  
+  ```cypher
+  RETURN null ORDER BY properties(CASE WHEN null THEN null END)
+  ```
+  
+  I encountered the following error:
+  ```
+  Type mismatch: expected Map, Node or Relationship but was Boolean (line 1, column 33 (offset: 32))
+  "RETURN null ORDER BY properties(CASE WHEN null THEN null END)"
+                                   ^
+  ```
+  
+  I believe the aforementioned query is semantically and syntactially correct and thus no error should be thrown here.
+  Additionally, alternatives that use the same syntax constructs or evaluate to the same query don't throw an error, like for example:
+  `RETURN properties(CASE WHEN null THEN null END)` or
+  `RETURN null ORDER BY properties(CASE WHEN false THEN null END)` or
+  `RETURN null ORDER BY properties(null)`
+  
+  
+  I encountered this issue when testing queries against the **Neo4j 5.5.0 community version** in a Docker container running **alpine v.3**.
+  
+  ### Steps to reproduce
+  Run the following query and observe it throws an error:
+  ```cypher
+  RETURN null ORDER BY properties(CASE WHEN null THEN null END)
+  ```
+  
+  ### Expected behavior
+  The query should run successfully
+  
+  ### Actual behavior
+  The query fails with the error message `Type mismatch: expected Map, Node or Relationship but was Boolean...`

@@ -1,0 +1,9 @@
+target: neo4j
+# When dinkel found this bug
+time_found: "2023-03-27 20:41:58.648776586 +0200 CEST m=+228.382403336"
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "CREATE ()-[m:A]->(), ({t:type(m)})"

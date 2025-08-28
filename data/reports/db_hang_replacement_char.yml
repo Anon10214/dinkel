@@ -1,0 +1,12 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-07-04 16:35:34.566412574 +0200 CEST m=+211.661495482"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "FOREACH ( n0 IN [] | CREATE () ) RETURN toLower(replace(\"�\", \"\", CASE WHEN true THEN \"   \"+CASE \" \" WHEN rtrim(null) THEN 0 ELSE 0 END END))"

@@ -1,0 +1,17 @@
+{
+	"ulid": "01HGSC9FDG722RR1W4387KHEPT",
+	"minTime": 1701648003591,
+	"maxTime": 1701655200000,
+	"stats": {
+		"numSamples": 380160,
+		"numSeries": 264,
+		"numChunks": 3173
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HGSC9FDG722RR1W4387KHEPT"
+		]
+	},
+	"version": 1
+}

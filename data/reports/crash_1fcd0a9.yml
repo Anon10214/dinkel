@@ -1,0 +1,12 @@
+target: falkordb
+strategy: 0
+# When dinkel found this bug
+time_found: "2024-07-09 16:44:53.080954497 +0000 UTC m=+2861.901033076"
+# The commit that introduced this bug
+offending_commit: ""
+# The status of this bug report { unconfirmed | confirmed | fixed | rejected }
+report_status: unconfirmed
+# The byte string that generates a query triggering this bug
+byte_string: ""
+query: 
+  - "RETURN 0 ORDER BY [x IN [y IN [zzzzzzzzz IN [] WHERE (false) | (true)] WHERE (false) | (NOT (true))] WHERE toBoolean((null)) | (true)] IS NOT NULL"
