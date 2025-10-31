@@ -56,14 +56,24 @@ In order to quickly see the effectiveness of dinkel, we recommend running it aga
 An easy way to do so is by spinning up a Neo4j 5.6.0 docker container, and running dinkel against it:
 
 ```
+# Generate the config
+./dinkel config
+
+# Run neo4j
 docker run --rm -it -p 7687:7687 \
   -e NEO4J_PLUGINS=\[\"apoc\"\] \
   -e NEO4J_AUTH=none \
   -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
   -e NEO4J_server+default_listen_address=0.0.0.0 \
+	-e NEO4J_internal_cypher_parallel__runtime__support=all \
   neo4j:5.6.0
 
+# Test neo4j
 ./dinkel fuzz neo4j
+# Test neo4j for logic bugs
+./dinkel fuzz neo4j 1
+# Test neo4j and print all queries
+./dinkel fuzz neo4j -v2
 ```
 
 ### Evaluation data
