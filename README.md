@@ -203,7 +203,7 @@ You might have an easier time getting started with developing dinkel after readi
 If you find a bug using dinkel, remember to responsibly disclose it to the respective developers.\
 Once the bug is fixed, you may send an E-Mail to [bugs@dinkel-fuzz.ch](mailto:bugs@dinkel-fuzz.ch?subject=[Bug]), containing a subject starting with "[Bug]".
 
-### So far, dinkel has found over 115 bugs in three GDBMSs:
+### So far, dinkel has found over 127 bugs in three GDBMSs:
 
 <details>
 
