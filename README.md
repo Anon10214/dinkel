@@ -28,7 +28,6 @@
 - [🔎 Fuzzing with Dinkel](#-fuzzing-with-dinkel)
   - [Prometheus Exporter](#prometheus-exporter)
 - [💻 Contributing](#-contributing)
-- [🐛 Bugs found by Dinkel](#-bugs-found-by-dinkel)
 
 </details>
 
@@ -38,7 +37,159 @@
 
 ### Bug reports
 
-A list of all the bugs referenced in the paper can be found at the bottom of this README.
+<details>
+
+<summary>Neo4j</summary>
+
+|   Type    | Link to GitHub Issue                        | Notes |
+| :-------: | ------------------------------------------- | ----- |
+| Exception | https://github.com/neo4j/neo4j/issues/13054 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13077 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13078 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13086 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13091 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13093 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13100 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13098 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13101 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13102 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13099 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13105 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13109 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13143 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13129 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13141 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13147 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13148 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13152 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13150 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13163 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13164 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13169 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13194 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13196 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13284 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13337 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13336 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13345 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13427 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13429 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13119 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13123 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13130 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13142 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13149 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13151 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13425 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13426 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13431 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13432 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13436 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13439 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13466 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13486 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13487 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13491 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13552 |       |
+| Exception | https://github.com/neo4j/neo4j/issues/13568 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13605 |       |
+|   Logic   | https://github.com/neo4j/neo4j/issues/13606 |       |
+
+</details>
+
+<details>
+
+<summary>FalkorDB (Formerly known as RedisGraph)</summary>
+
+|   Type    | Link to GitHub Issue                                 | Notes                    |
+| :-------: | ---------------------------------------------------- | ------------------------ |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3041 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3042 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3043 |                          |
+| Exception | https://github.com/RedisGraph/RedisGraph/issues/3044 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3051 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3052 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3058 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3059 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3060 |                          |
+| Exception | https://github.com/RedisGraph/RedisGraph/issues/3061 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3062 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3063 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3064 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3065 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3072 |                          |
+|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3073 |                          |
+| Exception | https://github.com/RedisGraph/RedisGraph/issues/3104 |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/602      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/603      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/610      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/608      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/605      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/607      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/621      |                          |
+|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/622      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/624      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/627      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/629      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/625      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/626      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/637      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/651      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/650      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/694      |                          |
+|   Crash   | Reported Confidentially                              | crash_1fcd0a9            |
+|   Crash   | Reported Confidentially                              | crash_3607fe             |
+|   Crash   | Reported Confidentially                              | crash_36398a             |
+|   Crash   | Reported Confidentially                              | crash_datablock_getitem  |
+|   Crash   | Reported Confidentially                              | crash_delete_record      |
+|   Crash   | Reported Confidentially                              | crash_duplicate_entries  |
+|   Crash   | Reported Confidentially                              | crash_getattributes      |
+|   Crash   | Reported Confidentially                              | crash_invalid_function   |
+|   Crash   | Reported Confidentially                              | db_hang_replacement_char |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/747      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/748      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/749      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/750      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/830      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/832      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/831      |                          |
+| Exception | https://github.com/FalkorDB/FalkorDB/issues/829      |                          |
+|   Crash   | Reported Confidentially                              | crash_rowIterator        |
+|   Crash   | Reported Confidentially                              | crash_36882a             |
+|   Crash   | Reported Confidentially                              | crash_record_gettype     |
+|   Crash   | Reported Confidentially                              | paralyze_unicode         |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/996      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/997      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/998      |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1018     |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1030     |                          |
+|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1031     |                          |
+|   Crash   | Reported Confidentially                              | crash_371b29             |
+
+</details>
+
+<details>
+
+<summary>Memgraph</summary>
+
+|   Type    | Link to GitHub Issue                             | Notes                                                     |
+| :-------: | ------------------------------------------------ | --------------------------------------------------------- |
+|   Crash   | https://github.com/memgraph/memgraph/issues/887  |                                                           |
+| Exception | https://github.com/memgraph/memgraph/issues/904  |                                                           |
+|   Crash   |                                                  | crash_abort                                               |
+|   Crash   |                                                  | crash_segfault_less                                       |
+| Exception | https://github.com/memgraph/memgraph/issues/2089 |                                                           |
+| Exception |                                                  | min_bool_bool - fixed independently before we reported it |
+| Exception | https://github.com/memgraph/memgraph/issues/2090 |                                                           |
+| Exception | https://github.com/memgraph/memgraph/issues/2091 |                                                           |
+| Exception | https://github.com/memgraph/memgraph/issues/2092 |                                                           |
+|   Logic   | https://github.com/memgraph/memgraph/issues/2094 |                                                           |
+|   Logic   | https://github.com/memgraph/memgraph/issues/2093 |                                                           |
+|   Crash   | https://github.com/memgraph/memgraph/issues/2841 |                                                           |
+| Exception | https://github.com/memgraph/memgraph/issues/2842 |                                                           |
+| Exception | https://github.com/memgraph/memgraph/issues/2843 |                                                           |
+
+</details>
 
 ### System disclaimer
 
@@ -207,164 +358,3 @@ Feel free to open a pull request if you have made any improvements to dinkel!
 Please refer to [the contributing guidelines](CONTRIBUTING.md) for more information about how to contribute.
 
 You might have an easier time getting started with developing dinkel after reading its [paper](link.to.paper).
-
-# 🐛 Bugs found by Dinkel
-
-If you find a bug using dinkel, remember to responsibly disclose it to the respective developers.\
-Once the bug is fixed, you may send an E-Mail to [bugs@dinkel-fuzz.ch](mailto:bugs@dinkel-fuzz.ch?subject=[Bug]), containing a subject starting with "[Bug]".
-
-### So far, dinkel has found over 127 bugs in three GDBMSs:
-
-<details>
-
-<summary>Neo4j</summary>
-
-|   Type    | Link to GitHub Issue                        | Notes |
-| :-------: | ------------------------------------------- | ----- |
-| Exception | https://github.com/neo4j/neo4j/issues/13054 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13077 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13078 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13086 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13091 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13093 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13100 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13098 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13101 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13102 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13099 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13105 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13109 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13143 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13129 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13141 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13147 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13148 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13152 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13150 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13163 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13164 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13169 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13194 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13196 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13284 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13337 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13336 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13345 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13427 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13429 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13119 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13123 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13130 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13142 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13149 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13151 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13425 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13426 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13431 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13432 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13436 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13439 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13466 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13486 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13487 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13491 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13552 |       |
-| Exception | https://github.com/neo4j/neo4j/issues/13568 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13605 |       |
-|   Logic   | https://github.com/neo4j/neo4j/issues/13606 |       |
-
-</details>
-
-<details>
-
-<summary>FalkorDB (Formerly known as RedisGraph)</summary>
-
-|   Type    | Link to GitHub Issue                                 | Notes                    |
-| :-------: | ---------------------------------------------------- | ------------------------ |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3041 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3042 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3043 |                          |
-| Exception | https://github.com/RedisGraph/RedisGraph/issues/3044 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3051 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3052 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3058 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3059 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3060 |                          |
-| Exception | https://github.com/RedisGraph/RedisGraph/issues/3061 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3062 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3063 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3064 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3065 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3072 |                          |
-|   Crash   | https://github.com/RedisGraph/RedisGraph/issues/3073 |                          |
-| Exception | https://github.com/RedisGraph/RedisGraph/issues/3104 |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/602      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/603      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/610      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/608      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/605      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/607      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/621      |                          |
-|   Crash   | https://github.com/FalkorDB/FalkorDB/issues/622      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/624      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/627      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/629      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/625      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/626      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/637      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/651      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/650      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/694      |                          |
-|   Crash   | Reported Confidentially                              | crash_1fcd0a9            |
-|   Crash   | Reported Confidentially                              | crash_3607fe             |
-|   Crash   | Reported Confidentially                              | crash_36398a             |
-|   Crash   | Reported Confidentially                              | crash_datablock_getitem  |
-|   Crash   | Reported Confidentially                              | crash_delete_record      |
-|   Crash   | Reported Confidentially                              | crash_duplicate_entries  |
-|   Crash   | Reported Confidentially                              | crash_getattributes      |
-|   Crash   | Reported Confidentially                              | crash_invalid_function   |
-|   Crash   | Reported Confidentially                              | db_hang_replacement_char |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/747      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/748      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/749      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/750      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/830      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/832      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/831      |                          |
-| Exception | https://github.com/FalkorDB/FalkorDB/issues/829      |                          |
-|   Crash   | Reported Confidentially                              | crash_rowIterator        |
-|   Crash   | Reported Confidentially                              | crash_36882a             |
-|   Crash   | Reported Confidentially                              | crash_record_gettype     |
-|   Crash   | Reported Confidentially                              | paralyze_unicode         |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/996      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/997      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/998      |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1018     |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1030     |                          |
-|   Logic   | https://github.com/FalkorDB/FalkorDB/issues/1031     |                          |
-|   Crash   | Reported Confidentially                              | crash_371b29             |
-
-</details>
-
-<details>
-
-<summary>Memgraph</summary>
-
-|   Type    | Link to GitHub Issue                             | Notes                                                     |
-| :-------: | ------------------------------------------------ | --------------------------------------------------------- |
-|   Crash   | https://github.com/memgraph/memgraph/issues/887  |                                                           |
-| Exception | https://github.com/memgraph/memgraph/issues/904  |                                                           |
-|   Crash   |                                                  | crash_abort                                               |
-|   Crash   |                                                  | crash_segfault_less                                       |
-| Exception | https://github.com/memgraph/memgraph/issues/2089 |                                                           |
-| Exception |                                                  | min_bool_bool - fixed independently before we reported it |
-| Exception | https://github.com/memgraph/memgraph/issues/2090 |                                                           |
-| Exception | https://github.com/memgraph/memgraph/issues/2091 |                                                           |
-| Exception | https://github.com/memgraph/memgraph/issues/2092 |                                                           |
-|   Logic   | https://github.com/memgraph/memgraph/issues/2094 |                                                           |
-|   Logic   | https://github.com/memgraph/memgraph/issues/2093 |                                                           |
-|   Crash   | https://github.com/memgraph/memgraph/issues/2841 |                                                           |
-| Exception | https://github.com/memgraph/memgraph/issues/2842 |                                                           |
-| Exception | https://github.com/memgraph/memgraph/issues/2843 |                                                           |
-
-</details>
